@@ -1,0 +1,1 @@
+DROP SEQUENCE IF EXISTS "sq_acceptance_type_id";

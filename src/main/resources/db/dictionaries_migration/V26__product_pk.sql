@@ -1,0 +1,1 @@
+ALTER TABLE "dict_product" ADD CONSTRAINT dict_product_pk PRIMARY KEY (id);

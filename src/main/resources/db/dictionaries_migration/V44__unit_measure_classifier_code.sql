@@ -1,0 +1,1 @@
+alter table dict_unit_measure add column classifier_code varchar(255);

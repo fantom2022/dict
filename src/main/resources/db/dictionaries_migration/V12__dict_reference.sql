@@ -1,0 +1,1 @@
+ALTER TABLE "reference" RENAME TO "dict_reference";

@@ -1,0 +1,1 @@
+ALTER TABLE "dict_waste" ALTER COLUMN "waste" TYPE NUMERIC;

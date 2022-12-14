@@ -1,0 +1,1 @@
+alter table dict_production_plan_part add person_id int8;

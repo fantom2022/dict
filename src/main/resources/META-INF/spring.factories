@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+net.vniia.dictionaries.autoconfig.DictionariesAutoConfig,\
+net.vniia.dictionaries.autoconfig.FlywayMigrationAutoConfiguration

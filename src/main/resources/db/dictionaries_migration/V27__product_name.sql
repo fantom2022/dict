@@ -1,0 +1,1 @@
+ALTER TABLE "dict_product" ALTER COLUMN "name" TYPE varchar(1000);

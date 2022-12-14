@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
+        xmlns='http://www.ehcache.org/v3'
+        xsi:schemaLocation="
+        http://www.ehcache.org/v3 ehcache-core-3.5.xsd
+        http://www.ehcache.org/v3/jsr107 ehcache-107-ext-3.5.xsd"
+>
+
+    <service>
+        <jsr107:defaults enable-management="true" enable-statistics="true"/>
+    </service>
+
+    <!--if need save to cache to disk -->
+    <!--persistence directory="./cache"/-->
+
+    <cache alias="calendar" uses-template="calendar_template"/>
+
+    <cache-template name="calendar_template">
+        <key-type>java.lang.String</key-type>
+        <value-type>java.util.ArrayList</value-type>
+        <expiry>
+            <ttl unit="hours">24</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">999</heap>
+        </resources>
+    </cache-template>
+
+</config>
