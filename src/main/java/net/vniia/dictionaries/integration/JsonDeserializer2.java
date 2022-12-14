@@ -24,11 +24,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Deserializer;
-import org.apache.kafka.common.serialization.ExtendedDeserializer;
 import org.springframework.core.ResolvableType;
-import org.springframework.kafka.support.converter.AbstractJavaTypeMapper;
-import org.springframework.kafka.support.converter.DefaultJackson2JavaTypeMapper;
-import org.springframework.kafka.support.converter.Jackson2JavaTypeMapper;
+import org.springframework.kafka.support.mapping.AbstractJavaTypeMapper;
+import org.springframework.kafka.support.mapping.DefaultJackson2JavaTypeMapper;
+import org.springframework.kafka.support.mapping.Jackson2JavaTypeMapper;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
@@ -51,7 +50,7 @@ import java.util.Map;
  * @author Yanming Zhou
  * @author Elliot Kennedy
  */
-public class JsonDeserializer2<T> implements ExtendedDeserializer<T> {
+public class JsonDeserializer2<T> implements Deserializer<T> {
 
 	/**
 	 * Kafka config property for the default key type if no header.
