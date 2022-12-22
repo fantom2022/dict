@@ -44,7 +44,7 @@
         <dependency>
             <groupId>net.vniia</groupId>
             <artifactId>common</artifactId>
-            <version>0.1.177</version>
+            <version>0.1.178</version>
         </dependency>
 
         <dependency>
