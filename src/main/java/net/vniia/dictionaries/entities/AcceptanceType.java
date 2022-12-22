@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.vniia.common.audit.defaultImpl.Auditable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "DICT_ACCEPTANCE_TYPE")

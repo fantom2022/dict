@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import net.vniia.dictionaries.dto.StorehouseDto;
 import net.vniia.dictionaries.entities.enums.StorehouseTypeEnum;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Optional;
 
 @Entity

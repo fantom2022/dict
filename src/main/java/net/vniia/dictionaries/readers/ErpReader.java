@@ -1,5 +1,6 @@
 package net.vniia.dictionaries.readers;
 
+import jakarta.persistence.PersistenceContext;
 import net.vniia.common.jpa.JPAQuery;
 import net.vniia.common.jpa.JPAQueryFactory;
 import net.vniia.common.reader.PageHelper;
@@ -17,8 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
 
 @Repository
 @Transactional(readOnly = true)

@@ -2,7 +2,7 @@ package net.vniia.dictionaries.entities;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity

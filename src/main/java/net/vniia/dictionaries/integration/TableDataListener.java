@@ -4,8 +4,8 @@ import org.apache.kafka.common.TopicPartition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.kafka.listener.ConsumerSeekAware;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;

@@ -8,9 +8,9 @@ import net.vniia.dictionaries.dto.WorkshopDto;
 import net.vniia.dictionaries.dto.WorkshopGroupDto;
 import net.vniia.dictionaries.dto.WorkshopGroupWorkshopDto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.util.Optional;
 
 @Entity

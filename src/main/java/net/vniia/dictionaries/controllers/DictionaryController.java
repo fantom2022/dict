@@ -10,7 +10,7 @@ import net.vniia.dictionaries.readers.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 import java.util.Arrays;
 import java.util.Date;
 
