@@ -12,9 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.kafka.listener.MessageListenerContainer;
-import org.springframework.kafka.listener.SeekToCurrentBatchErrorHandler;
-import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.List;
@@ -37,16 +36,22 @@ public class KafkaDataListenerConfig {
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(props));
         factory.getContainerProperties().setIdleEventInterval(1000L);
-        factory.getContainerProperties().setAckOnError(false);
-        factory.setErrorHandler(new SeekToCurrentErrorHandler() {
+        //factory.getContainerProperties().setAckOnError(false);
+        factory.setCommonErrorHandler(new DefaultErrorHandler() {
             @Override
-            public void handle(Exception thrownException, List<ConsumerRecord<?, ?>> records, Consumer<?, ?> consumer, MessageListenerContainer container) {
+            public boolean isAckAfterHandle() {
+                return false;
+            }
+
+            @Override
+            public void handleRemaining(Exception thrownException, List<ConsumerRecord<?, ?>> records, Consumer<?, ?> consumer, MessageListenerContainer container) {
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                 }
-                super.handle(thrownException, records, consumer, container);
+                super.handleRemaining(thrownException, records, consumer, container);
             }
+
         });
         return factory;
     }
@@ -242,23 +247,28 @@ public class KafkaDataListenerConfig {
         return this.createFactory(props);
     }
 
-    protected  <K, V> ConcurrentKafkaListenerContainerFactory<K, V> createFactory(Map<String, Object> props) {
+    protected <K, V> ConcurrentKafkaListenerContainerFactory<K, V> createFactory(Map<String, Object> props) {
         ConcurrentKafkaListenerContainerFactory<K, V> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(props));
         factory.getContainerProperties().setIdleEventInterval(1000L);
-        factory.getContainerProperties().setAckOnError(false);
+        //factory.getContainerProperties().setAckOnError(false);
         factory.setAutoStartup(false);
+        factory.setCommonErrorHandler(new DefaultErrorHandler() {
 
-        factory.setBatchErrorHandler(new SeekToCurrentBatchErrorHandler() {
             @Override
-            public void handle(Exception thrownException, ConsumerRecords<?, ?> data, Consumer<?, ?> consumer,
-                               MessageListenerContainer container) {
+            public boolean isAckAfterHandle() {
+                return false;
+            }
+
+            @Override
+            public void handleBatch(Exception thrownException, ConsumerRecords<?, ?> data, Consumer<?, ?> consumer,
+                                    MessageListenerContainer container, Runnable runnable) {
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                 }
-                super.handle(thrownException, data, consumer, container);
+                super.handleBatch(thrownException, data, consumer, container, runnable);
             }
         });
         factory.setBatchListener(true);

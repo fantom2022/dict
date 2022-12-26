@@ -1,161 +1,160 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.vniia</groupId>
-	<artifactId>dictionaries</artifactId>
-	<version>0.0.179</version>
-	<packaging>jar</packaging>
-	<name>VNIIA dictionaries</name>
-	<url>http://www.vniia.ru/</url>
+    <groupId>net.vniia</groupId>
+    <artifactId>dictionaries</artifactId>
+    <version>0.2.179</version>
+    <packaging>jar</packaging>
+    <name>VNIIA dictionaries</name>
+    <url>http://www.vniia.ru/</url>
 
-<!--	<distributionManagement>-->
-<!--	   <repository>-->
-<!--		  <id>nexus_server</id>-->
-<!--		  <url>http://desktop-vpdf25h.vniia.net:8081/repository/maven-vniia/</url>-->
-<!--	   </repository>-->
-<!--	</distributionManagement>-->
+    <!--	<distributionManagement>-->
+    <!--	   <repository>-->
+    <!--		  <id>nexus_server</id>-->
+    <!--		  <url>http://desktop-vpdf25h.vniia.net:8081/repository/maven-vniia/</url>-->
+    <!--	   </repository>-->
+    <!--	</distributionManagement>-->
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.7</version>
-		<relativePath/>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.7</version>
+        <relativePath/>
+    </parent>
 
-	<properties>
-		<java.version>17</java.version>
-		<flyway.version>5.2.1</flyway.version>
-		<lombok.version>1.18.22</lombok.version>
-		<log4j2.version>2.19.0</log4j2.version>
-		<spring-boot.version>2.7.7</spring-boot.version>
-		<com.querydsl.version>5.0.0</com.querydsl.version>
-	</properties>
+    <properties>
+        <java.version>17</java.version>
+        <flyway.version>5.2.1</flyway.version>
+        <lombok.version>1.18.22</lombok.version>
+        <log4j2.version>2.19.0</log4j2.version>
+        <spring-boot.version>2.7.7</spring-boot.version>
+        <com.querydsl.version>5.0.0</com.querydsl.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure-processor</artifactId>
-			<version>${spring-boot.version}</version>
-			<optional>true</optional>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <version>${spring-boot.version}</version>
+            <optional>true</optional>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.cache</groupId>
-			<artifactId>cache-api</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
-		</dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
 
+        <dependency>
+            <groupId>net.vniia</groupId>
+            <artifactId>common</artifactId>
+            <version>0.2.176</version>
+        </dependency>
 
-		<!--		<dependency>-->
-<!--			<groupId>net.vniia</groupId>-->
-<!--			<artifactId>common</artifactId>-->
-<!--			<version>0.0.168</version>-->
-<!--		</dependency>-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>${flyway.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>5.0.0</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.querydsl</groupId>
-			<artifactId>querydsl-apt</artifactId>
-			<version>5.0.0</version>
-		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Built-By>VNIIA</Built-By>
+                        </manifestEntries>
+                        <manifestSections>
+                            <manifestSection>
+                                <name>net/vniia/dictionaries/</name>
+                                <manifestEntries>
+                                    <Specification-Title>VNIIA Dictionaries</Specification-Title>
+                                    <Specification-Version>${pom.version}</Specification-Version>
+                                    <Specification-Vendor>VNIIA</Specification-Vendor>
+                                    <Implementation-Title>net.vniia.dictionaries</Implementation-Title>
+                                    <Implementation-Version>${pom.version}</Implementation-Version>
+                                    <Implementation-Vendor>VNIIA</Implementation-Vendor>
+                                </manifestEntries>
+                            </manifestSection>
+                        </manifestSections>
+                    </archive>
+                </configuration>
+            </plugin>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifestEntries>
-							<Built-By>VNIIA</Built-By>
-						</manifestEntries>
-						<manifestSections>
-							<manifestSection>
-								<name>net/vniia/dictionaries/</name>
-								<manifestEntries>
-									<Specification-Title>VNIIA Dictionaries</Specification-Title>
-									<Specification-Version>${pom.version}</Specification-Version>
-									<Specification-Vendor>VNIIA</Specification-Vendor>
-									<Implementation-Title>net.vniia.dictionaries</Implementation-Title>
-									<Implementation-Version>${pom.version}</Implementation-Version>
-									<Implementation-Vendor>VNIIA</Implementation-Vendor>
-								</manifestEntries>
-							</manifestSection>
-						</manifestSections>
-					</archive>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>com.mysema.maven</groupId>
-				<artifactId>apt-maven-plugin</artifactId>
-				<version>1.1.3</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>process</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>target/generated-sources/java</outputDirectory>
-							<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
 
-			<plugin>
-			   <artifactId>maven-deploy-plugin</artifactId>
-			   <version>2.8.2</version>
-			   <configuration>
-				  <skip>true</skip>
-			   </configuration>
-			</plugin>
-
-<!--			<plugin>-->
-<!--			   <groupId>org.sonatype.plugins</groupId>-->
-<!--			   <artifactId>nexus-staging-maven-plugin</artifactId>-->
-<!--			   <version>1.6.6</version>-->
-<!--			   <executions>-->
-<!--				  <execution>-->
-<!--					 <id>default-deploy</id>-->
-<!--					 <phase>deploy</phase>-->
-<!--					 <goals>-->
-<!--						<goal>deploy</goal>-->
-<!--					 </goals>-->
-<!--				  </execution>-->
-<!--			   </executions>-->
-<!--			   <configuration>-->
-<!--				  <serverId>nexus</serverId>-->
-<!--						<nexusUrl>http://desktop-vpdf25h.vniia.net:8081/</nexusUrl>-->
-<!--						<serverId>nexus_server</serverId>-->
-<!--				  <skipStaging>true</skipStaging>-->
-<!--			   </configuration>-->
-<!--			</plugin>-->
-		</plugins>
-	</build>
+            <!--			<plugin>-->
+            <!--			   <groupId>org.sonatype.plugins</groupId>-->
+            <!--			   <artifactId>nexus-staging-maven-plugin</artifactId>-->
+            <!--			   <version>1.6.6</version>-->
+            <!--			   <executions>-->
+            <!--				  <execution>-->
+            <!--					 <id>default-deploy</id>-->
+            <!--					 <phase>deploy</phase>-->
+            <!--					 <goals>-->
+            <!--						<goal>deploy</goal>-->
+            <!--					 </goals>-->
+            <!--				  </execution>-->
+            <!--			   </executions>-->
+            <!--			   <configuration>-->
+            <!--				  <serverId>nexus</serverId>-->
+            <!--						<nexusUrl>http://desktop-vpdf25h.vniia.net:8081/</nexusUrl>-->
+            <!--						<serverId>nexus_server</serverId>-->
+            <!--				  <skipStaging>true</skipStaging>-->
+            <!--			   </configuration>-->
+            <!--			</plugin>-->
+        </plugins>
+    </build>
 </project>
