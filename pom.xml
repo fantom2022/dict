@@ -4,7 +4,7 @@
 
     <groupId>net.vniia</groupId>
     <artifactId>dictionaries</artifactId>
-    <version>0.2.179</version>
+    <version>0.2.180</version>
     <packaging>jar</packaging>
     <name>VNIIA dictionaries</name>
     <url>http://www.vniia.ru/</url>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>net.vniia</groupId>
             <artifactId>common</artifactId>
-            <version>0.2.176</version>
+            <version>0.2.177</version>
         </dependency>
 
         <dependency>
