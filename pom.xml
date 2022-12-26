@@ -9,26 +9,27 @@
 	<name>VNIIA dictionaries</name>
 	<url>http://www.vniia.ru/</url>
 
-	<distributionManagement>
-	   <repository>
-		  <id>nexus_server</id>
-		  <url>http://desktop-vpdf25h.vniia.net:8081/repository/maven-vniia/</url>
-	   </repository>
-	</distributionManagement>
+<!--	<distributionManagement>-->
+<!--	   <repository>-->
+<!--		  <id>nexus_server</id>-->
+<!--		  <url>http://desktop-vpdf25h.vniia.net:8081/repository/maven-vniia/</url>-->
+<!--	   </repository>-->
+<!--	</distributionManagement>-->
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.8.RELEASE</version>
+		<version>2.7.7</version>
 		<relativePath/>
 	</parent>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<flyway.version>5.2.1</flyway.version>
-		<lombok.version>1.18.0</lombok.version>
+		<lombok.version>1.18.22</lombok.version>
 		<log4j2.version>2.19.0</log4j2.version>
-		<spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+		<spring-boot.version>2.7.7</spring-boot.version>
+		<com.querydsl.version>5.0.0</com.querydsl.version>
 	</properties>
 
 	<dependencies>
@@ -40,10 +41,23 @@
 		</dependency>
 
 		<dependency>
-			<groupId>net.vniia</groupId>
-			<artifactId>common</artifactId>
-			<version>0.0.168</version>
+			<groupId>javax.cache</groupId>
+			<artifactId>cache-api</artifactId>
+			<version>1.1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+
+		<!--		<dependency>-->
+<!--			<groupId>net.vniia</groupId>-->
+<!--			<artifactId>common</artifactId>-->
+<!--			<version>0.0.168</version>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
@@ -59,7 +73,7 @@
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
-			<version>4.1.4</version>
+			<version>5.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -122,26 +136,26 @@
 			   </configuration>
 			</plugin>
 
-			<plugin>
-			   <groupId>org.sonatype.plugins</groupId>
-			   <artifactId>nexus-staging-maven-plugin</artifactId>
-			   <version>1.6.6</version>
-			   <executions>
-				  <execution>
-					 <id>default-deploy</id>
-					 <phase>deploy</phase>
-					 <goals>
-						<goal>deploy</goal>
-					 </goals>
-				  </execution>
-			   </executions>
-			   <configuration>
-				  <serverId>nexus</serverId>
-						<nexusUrl>http://desktop-vpdf25h.vniia.net:8081/</nexusUrl>
-						<serverId>nexus_server</serverId>
-				  <skipStaging>true</skipStaging>
-			   </configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--			   <groupId>org.sonatype.plugins</groupId>-->
+<!--			   <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--			   <version>1.6.6</version>-->
+<!--			   <executions>-->
+<!--				  <execution>-->
+<!--					 <id>default-deploy</id>-->
+<!--					 <phase>deploy</phase>-->
+<!--					 <goals>-->
+<!--						<goal>deploy</goal>-->
+<!--					 </goals>-->
+<!--				  </execution>-->
+<!--			   </executions>-->
+<!--			   <configuration>-->
+<!--				  <serverId>nexus</serverId>-->
+<!--						<nexusUrl>http://desktop-vpdf25h.vniia.net:8081/</nexusUrl>-->
+<!--						<serverId>nexus_server</serverId>-->
+<!--				  <skipStaging>true</skipStaging>-->
+<!--			   </configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 </project>
