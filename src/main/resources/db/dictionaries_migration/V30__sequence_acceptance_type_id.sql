@@ -1,7 +1,7 @@
 DROP SEQUENCE IF EXISTS "sq_acceptance_type_id";
 CREATE SEQUENCE "sq_acceptance_type_id"
-    INCREMENT 1
+    INCREMENT BY 1
     MINVALUE  1
     MAXVALUE 9223372036854775807
-    START 1
+    START WITH 1
     CACHE 1;
